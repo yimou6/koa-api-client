@@ -238,6 +238,7 @@ export default {
               this.$message.success(msg)
               this.resetRegisterForm()
               this.cardName = 'login'
+              this.setTabBarLeft()
             } else {
               this.$message.warning(msg)
             }

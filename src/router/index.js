@@ -6,17 +6,17 @@ Vue.use(VueRouter)
 // 需要权限的商城页面
 const shopAuthRoutes = [
   {
-    path: 'address',
+    path: '/address',
     name: 'Address',
     component: () => import('@/views/shop/address')
   },
   {
-    path: 'bag',
+    path: '/bag',
     name: 'Bag',
     component: () => import('@/views/shop/bag')
   },
   {
-    path: 'order',
+    path: '/order',
     name: 'Order',
     component: () => import('@/views/shop/order')
   }
@@ -93,7 +93,6 @@ const router = createRouter()
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher
-  console.log(router.getRoutes())
 }
 
 // 是否已添加路由

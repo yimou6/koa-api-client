@@ -3,7 +3,7 @@
     <div class="good-empty" v-if="empty"></div>
     <template v-else>
       <div class="good-img">
-        <img :src="images[activeImageIndex]" alt="img">
+        <img v-lazy="images[activeImageIndex]" alt="img">
       </div>
       <div class="good-info">
         <div class="good-name">{{ goodName }}</div>

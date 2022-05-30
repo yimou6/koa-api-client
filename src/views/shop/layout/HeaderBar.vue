@@ -62,7 +62,7 @@ export default {
       }
     },
     getUserCar() {
-      if (this.$route.path === '/bag') {
+      if (this.$route.path === '/bag' || !this.$store.state.token) {
         return
       }
       axios.get('/cart').then(res => {

@@ -20,7 +20,7 @@
         {{ totalPrice }}
       </div>
       <div class="buy-btn">
-        <el-button size="medium" @click="handleSubmit" :disabled="totalPrice === 0">去付款</el-button>
+        <el-button size="medium" @click="handleSubmit" :disabled="totalPrice === 0 || address_id === ''">去付款</el-button>
       </div>
     </template>
     <el-empty v-else></el-empty>
@@ -51,7 +51,7 @@ export default {
         } else {
           this.address_id = ''
         }
-        this.addressList = val
+        this.addressList = val || []
       }
     }
   },
@@ -66,7 +66,11 @@ export default {
       return price
     },
     addressInfo() {
-      return this.addressList.find(item => item.id === this.address_id)
+      return this.addressList.find(item => item.id === this.address_id) || {
+        consignee: '',
+        phone: '',
+        address: ''
+      }
     }
   },
   mounted() {
@@ -110,6 +114,7 @@ export default {
       if (this.totalPrice > 0) {
         const goods_info = this.goodList.filter(item => item.selected)
         axios.put('/order', {
+          id: this.goodList.map(it => it.id),
           address_id: this.address_id,
           goods_info: JSON.stringify(goods_info),
           total: this.totalPrice

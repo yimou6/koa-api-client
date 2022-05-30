@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import i18n from '@/i18n'
 import './assets/iconfont/iconfont.css'
+import VueLazyLoad from 'vue-lazyload'
 
 import { initUser } from '@/utils'
 
@@ -16,6 +17,8 @@ Vue.use(ElementUI,{
   size: 'small',
   zIndex: 1000
 })
+
+Vue.use(VueLazyLoad)
 
 initUser()
 
